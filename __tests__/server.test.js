@@ -75,6 +75,18 @@ describe("express server", () => {
     expect(typeof response.body).toEqual("object");
   });
 
+  it("should response with 200 status on PUT /food/:id ", async () => {
+    // arrange
+    let param = "/food/10";
+    let status = 200;
+    // act
+    const response = await request.put(param).send({
+      name: "apple",
+    });
+    // assert
+    expect(response.status).toBe(status);
+  });
+
   it("should response with object and 200 status on GET /clothes ", async () => {
     // arrange
     let param = "/clothes";
@@ -118,5 +130,19 @@ describe("express server", () => {
     // assert
     expect(response.status).toBe(status);
     expect(typeof response.body).toEqual("object");
+  });
+
+  it("should response with 200 status on PUT /clothes/:id ", async () => {
+    // arrange
+    let param = "/clothes/10";
+    let status = 200;
+    // act
+    const response = await request.put(param).send({
+      name: "Jacket",
+      price: 11,
+      clothId: "31",
+    });
+    // assert
+    expect(response.status).toBe(status);
   });
 });
